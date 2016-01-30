@@ -24,6 +24,7 @@ class Plugin extends Base
         $this->template->hook->attach('template:config:integrations', 'GoogleAuth:config/integration');
         $this->template->hook->attach('template:user:external', 'GoogleAuth:user/external');
         $this->template->hook->attach('template:user:authentication:form', 'GoogleAuth:user/authentication');
+        $this->template->hook->attach('template:user:create-remote:form', 'GoogleAuth:user/create_remote');
     }
 
     public function getPluginName()
