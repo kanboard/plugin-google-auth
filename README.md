@@ -6,7 +6,7 @@ Link a Google account to a Kanboard user profile.
 Author
 ------
 
-- Frederic Guillot
+- Frédéric Guillot
 - License MIT
 
 Requirements
@@ -61,7 +61,7 @@ There are two different methods to configure Kanboard:
 1. The easiest way is to copy and paste the Google Client credentials in the form **Settings > Integrations > Google Authentication**.
 2. Or add the credentials in your custom config file
 
-If you use the second method, use these parameters:
+If you use the second method, use these parameters in your `config.php`:
 
 ```php
 <?php
