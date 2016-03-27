@@ -3,7 +3,8 @@ Google Authentication
 
 [![Build Status](https://travis-ci.org/kanboard/plugin-google-auth.svg?branch=master)](https://travis-ci.org/kanboard/plugin-google-auth)
 
-Link a Google account to a Kanboard user profile.
+- Link a Google account to a Kanboard user profile.
+- Show Google Avatar image.
 
 Author
 ------
@@ -84,3 +85,5 @@ Kanboard use these information from your Google profile:
 - Google unique id
 
 The Google unique id is used to link together the local user account and the Google account.
+
+To disable the Google Avatar go to your user profile > integrations > and change the value of the checkbox.

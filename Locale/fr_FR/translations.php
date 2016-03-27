@@ -8,4 +8,5 @@ return array(
     'Google Authentication' => 'Authentification Google',
     'Help on Google authentication' => 'Aide sur l\'authentification Google',
     'Google Id' => 'Identifiant Google',
+    'Show Google Avatar' => 'Afficher l\'avatar Google',
 );

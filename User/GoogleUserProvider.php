@@ -22,4 +22,15 @@ class GoogleUserProvider extends OAuthUserProvider
     {
         return 'google_id';
     }
+
+    /**
+     * Get Avatar image url from Google profile
+     *
+     * @access public
+     * @return string
+     */
+    public function getAvatarUrl()
+    {
+        return !empty($this->user['picture']) ? $this->user['picture'] : '';
+    }
 }

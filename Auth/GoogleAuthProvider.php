@@ -72,7 +72,7 @@ class GoogleAuthProvider extends Base implements OAuthAuthenticationProviderInte
      *
      * @access public
      * @param  string  $code
-     * @return GoogleAuth
+     * @return GoogleAuthProvider
      */
     public function setCode($code)
     {
@@ -104,9 +104,12 @@ class GoogleAuthProvider extends Base implements OAuthAuthenticationProviderInte
                 $this->getGoogleClientId(),
                 $this->getGoogleClientSecret(),
                 $this->helper->url->to('OAuth', 'handler', array('plugin' => 'GoogleAuth'), '', true),
-                'https://accounts.google.com/o/oauth2/auth',
-                'https://accounts.google.com/o/oauth2/token',
-                array('https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile')
+                'https://accounts.google.com/o/oauth2/v2/auth',
+                'https://www.googleapis.com/oauth2/v4/token',
+                array(
+                    'email',
+                    'profile',
+                )
             );
         }
 
