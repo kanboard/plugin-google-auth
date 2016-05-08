@@ -9,7 +9,7 @@
 
     <?= $this->form->label(t('Google Client Secret'), 'google_client_secret') ?>
     <?= $this->form->password('google_client_secret', $values) ?>
-    <p class="form-help"><a href="https://github.com/kanboard/plugin-google-auth/blob/master/README.md"><?= t('Help on Google authentication') ?></a></p>
+    <p class="form-help"><a href="https://kanboard.net/plugin/google-auth"><?= t('Help on Google authentication') ?></a></p>
 
     <div class="form-actions">
         <input type="submit" value="<?= t('Save') ?>" class="btn btn-blue"/>

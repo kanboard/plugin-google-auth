@@ -14,7 +14,6 @@ class Plugin extends Base
 {
     public function initialize()
     {
-        $this->dispatcher->addListener('app.bootstrap', array($this, 'onBootstrap'));
         $this->dispatcher->addListener(AuthenticationManager::EVENT_SUCCESS, array($this, 'onLoginSuccess'));
 
         $this->authenticationManager->register(new GoogleAuthProvider($this->container));
@@ -31,9 +30,9 @@ class Plugin extends Base
         $this->template->hook->attach('template:user:create-remote:form', 'GoogleAuth:user/create_remote');
     }
 
-    public function onBootstrap()
+    public function onStartup()
     {
-        Translator::load($this->config->getCurrentLanguage(), __DIR__.'/Locale');
+        Translator::load($this->language->getCurrentLanguage(), __DIR__.'/Locale');
     }
 
     public function onLoginSuccess(AuthSuccessEvent $event)
@@ -72,7 +71,7 @@ class Plugin extends Base
 
     public function getPluginVersion()
     {
-        return '1.0.1';
+        return '1.0.2';
     }
 
     public function getPluginHomepage()
