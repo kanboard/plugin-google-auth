@@ -103,7 +103,7 @@ class GoogleAuthProvider extends Base implements OAuthAuthenticationProviderInte
             $this->service = $this->oauth->createService(
                 $this->getGoogleClientId(),
                 $this->getGoogleClientSecret(),
-                $this->helper->url->to('OAuth', 'handler', array('plugin' => 'GoogleAuth'), '', true),
+                $this->helper->url->to('OAuthController', 'handler', array('plugin' => 'GoogleAuth'), '', true),
                 'https://accounts.google.com/o/oauth2/v2/auth',
                 'https://www.googleapis.com/oauth2/v4/token',
                 array(
@@ -141,7 +141,7 @@ class GoogleAuthProvider extends Base implements OAuthAuthenticationProviderInte
      */
     public function unlink($userId)
     {
-        return $this->user->update(array('id' => $userId, 'google_id' => ''));
+        return $this->userModel->update(array('id' => $userId, 'google_id' => ''));
     }
 
     /**
@@ -156,7 +156,7 @@ class GoogleAuthProvider extends Base implements OAuthAuthenticationProviderInte
             return GOOGLE_CLIENT_ID;
         }
 
-        return $this->config->get('google_client_id');
+        return $this->configModel->get('google_client_id');
     }
 
     /**
@@ -171,6 +171,6 @@ class GoogleAuthProvider extends Base implements OAuthAuthenticationProviderInte
             return GOOGLE_CLIENT_SECRET;
         }
 
-        return $this->config->get('google_client_secret');
+        return $this->configModel->get('google_client_secret');
     }
 }

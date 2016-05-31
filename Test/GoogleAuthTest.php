@@ -3,7 +3,7 @@
 require_once 'tests/units/Base.php';
 
 use Kanboard\Plugin\GoogleAuth\Auth\GoogleAuthProvider;
-use Kanboard\Model\User;
+use Kanboard\Model\UserModel;
 
 class GoogleAuthTest extends Base
 {
@@ -18,7 +18,7 @@ class GoogleAuthTest extends Base
         $provider = new GoogleAuthProvider($this->container);
         $this->assertEmpty($provider->getGoogleClientId());
 
-        $this->assertTrue($this->container['config']->save(array('google_client_id' => 'my_id')));
+        $this->assertTrue($this->container['configModel']->save(array('google_client_id' => 'my_id')));
         $this->container['memoryCache']->flush();
 
         $this->assertEquals('my_id', $provider->getGoogleClientId());
@@ -29,7 +29,7 @@ class GoogleAuthTest extends Base
         $provider = new GoogleAuthProvider($this->container);
         $this->assertEmpty($provider->getGoogleClientSecret());
 
-        $this->assertTrue($this->container['config']->save(array('google_client_secret' => 'secret')));
+        $this->assertTrue($this->container['configModel']->save(array('google_client_secret' => 'secret')));
         $this->container['memoryCache']->flush();
 
         $this->assertEquals('secret', $provider->getGoogleClientSecret());
@@ -99,7 +99,7 @@ class GoogleAuthTest extends Base
 
     public function testUnlink()
     {
-        $userModel = new User($this->container);
+        $userModel = new UserModel($this->container);
         $provider = new GoogleAuthProvider($this->container);
 
         $this->assertEquals(2, $userModel->create(array('username' => 'test', 'google_id' => '1234')));

@@ -40,10 +40,10 @@ class GoogleAvatarProvider extends Base implements AvatarProviderInterface
     public function isActive(array $user)
     {
         if (!isset($this->googleAvatarCache[$user['id']])) {
-            $metadata = $this->userMetadata->getAll($user['id']);
+            $metadata = $this->userMetadataModel->getAll($user['id']);
 
             if (isset($metadata['google_show_avatar']) && $metadata['google_show_avatar'] == 1) {
-                $this->googleAvatarCache[$user['id']] = $this->userMetadata->get($user['id'], 'google_avatar_url');
+                $this->googleAvatarCache[$user['id']] = $this->userMetadataModel->get($user['id'], 'google_avatar_url');
             } else {
                 $this->googleAvatarCache[$user['id']] = '';
             }

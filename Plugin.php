@@ -17,10 +17,10 @@ class Plugin extends Base
         $this->dispatcher->addListener(AuthenticationManager::EVENT_SUCCESS, array($this, 'onLoginSuccess'));
 
         $this->authenticationManager->register(new GoogleAuthProvider($this->container));
-        $this->applicationAccessMap->add('OAuth', 'handler', Role::APP_PUBLIC);
+        $this->applicationAccessMap->add('OAuthController', 'handler', Role::APP_PUBLIC);
         $this->avatarManager->register(new GoogleAvatarProvider($this->container));
 
-        $this->route->addRoute('/oauth/google', 'OAuth', 'handler', 'GoogleAuth');
+        $this->route->addRoute('/oauth/google', 'OAuthController', 'handler', 'GoogleAuth');
 
         $this->template->hook->attach('template:auth:login-form:after', 'GoogleAuth:auth/login');
         $this->template->hook->attach('template:config:integrations', 'GoogleAuth:config/integration');
@@ -32,7 +32,7 @@ class Plugin extends Base
 
     public function onStartup()
     {
-        Translator::load($this->language->getCurrentLanguage(), __DIR__.'/Locale');
+        Translator::load($this->languageModel->getCurrentLanguage(), __DIR__.'/Locale');
     }
 
     public function onLoginSuccess(AuthSuccessEvent $event)
@@ -45,11 +45,11 @@ class Plugin extends Base
             if (! empty($avatar_url)) {
                 $options = array('google_avatar_url' => $avatar_url);
 
-                if (! $this->userMetadata->exists($user_id, 'google_show_avatar')) {
+                if (! $this->userMetadataModel->exists($user_id, 'google_show_avatar')) {
                     $options['google_show_avatar'] = 1;
                 }
 
-                $this->userMetadata->save($user_id, $options);
+                $this->userMetadataModel->save($user_id, $options);
             }
         }
     }
@@ -71,7 +71,7 @@ class Plugin extends Base
 
     public function getPluginVersion()
     {
-        return '1.0.2';
+        return '1.0.3';
     }
 
     public function getPluginHomepage()

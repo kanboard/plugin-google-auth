@@ -2,7 +2,7 @@
 
 namespace Kanboard\Plugin\GoogleAuth\Controller;
 
-use Kanboard\Controller\Oauth as BaseOAuth;
+use Kanboard\Controller\OAuthController as BaseOAuthController;
 
 /**
  * OAuth Controller
@@ -10,7 +10,7 @@ use Kanboard\Controller\Oauth as BaseOAuth;
  * @package  controller
  * @author   Frederic Guillot
  */
-class Oauth extends BaseOAuth
+class OAuthController extends BaseOAuthController
 {
     /**
      * Handle authentication

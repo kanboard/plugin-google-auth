@@ -2,7 +2,7 @@
 <div class="listing">
 
     <?= $this->form->label(t('Google OAuth callback URL'), 'google_oauth_url') ?>
-    <input type="text" class="auto-select" readonly="readonly" value="<?= $this->url->href('OAuth', 'handler', array('plugin' => 'GoogleAuth'), false, '', true) ?>"/>
+    <input type="text" class="auto-select" readonly="readonly" value="<?= $this->url->href('OAuthController', 'handler', array('plugin' => 'GoogleAuth'), false, '', true) ?>"/>
 
     <?= $this->form->label(t('Google Client Id'), 'google_client_id') ?>
     <?= $this->form->text('google_client_id', $values) ?>
