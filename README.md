@@ -17,7 +17,7 @@ Requirements
 
 - Kanboard >= 1.0.29
 - Access to the [Google Developer Console](https://console.developers.google.com)
-- OAuth Google API credentials
+- OAuth2 Google API credentials
 
 Installation
 ------------
@@ -33,25 +33,6 @@ Note: Plugin folder is case-sensitive.
 Documentation
 -------------
 
-### How does this work?
-
-- The Google authentication use the OAuth 2.0 protocol
-- Any user account in Kanboard can be linked to a Google Account
-- When a Kanboard user account is linked to Google, you can login with one click
-
-### Procedure to link a Google Account
-
-1. Go to your user profile
-2. Click on **External accounts**
-3. Click on the link **Link my Google Account**
-4. You are redirected to the **Google Consent screen**
-5. Authorize Kanboard by clicking on the button **Accept**
-6. Your account is now linked
-
-Now, on the login page you can be authenticated in one click with the link **Login with my Google Account**.
-
-Your name and email are automatically updated from your Google Account.
-
 ### Installation instructions
 
 #### Setting up OAuth 2.0 in Google Developer Console
@@ -62,6 +43,8 @@ Your name and email are automatically updated from your Google Account.
 #### Setting up Kanboard
 
 There are two different methods to configure Kanboard:
+
+![google_auth](https://cloud.githubusercontent.com/assets/323546/15695570/7b50cafc-2776-11e6-93d3-deea7f8f0b3f.png)
 
 1. The easiest way is to copy and paste the Google Client credentials in the form **Settings > Integrations > Google Authentication**.
 2. Or add the credentials in your custom config file
@@ -78,9 +61,34 @@ define('GOOGLE_CLIENT_ID', 'YOUR_CLIENT_ID');
 define('GOOGLE_CLIENT_SECRET', 'YOUR_CLIENT_SECRET');
 ```
 
+### Automatic account creation
+
+1. As administrator, enable the account creation in **Settings > Integrations > Google Authentication**
+2. If you are using Google Apps for Work, you can allow only your own domain name to avoid unwanted people
+3. People just need to click on link "Login with my Google Account" on the login page to create a new account
+
+Notes:
+
+- If you don't apply any domain restriction, **everybody with a Google Account will be able to sign-up**
+- The local part of the email address is used to generate Kanboard's username
+- Users created by this way will be marked as remote user and the login form will be disabled for them (no local password)
+
+### Procedure to link a Google Account
+
+1. Go to your user profile
+2. Click on **External accounts**
+3. Click on the link **Link my Google Account**
+4. You are redirected to the **Google Consent screen**
+5. Authorize Kanboard by clicking on the button **Accept**
+6. Your account is now linked
+
+Now, on the login page you can be authenticated in one click with the link **Login with my Google Account**.
+
+Your name and email are automatically updated from your Google Account.
+
 ### Notes
 
-Kanboard use these information from your Google profile:
+Kanboard uses these information from your Google profile:
 
 - Full name
 - Email address
@@ -88,4 +96,4 @@ Kanboard use these information from your Google profile:
 
 The Google unique id is used to link together the local user account and the Google account.
 
-To disable the Google Avatar go to your user profile > integrations > and change the value of the checkbox.
+To disable the Google Avatar go to your **user profile > integrations**, and change the value of the checkbox.

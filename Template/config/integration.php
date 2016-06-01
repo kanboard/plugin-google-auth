@@ -9,9 +9,17 @@
 
     <?= $this->form->label(t('Google Client Secret'), 'google_client_secret') ?>
     <?= $this->form->password('google_client_secret', $values) ?>
+
+    <?= $this->form->hidden('google_account_creation', array('google_account_creation' => 0)) ?>
+    <?= $this->form->checkbox('google_account_creation', t('Allow Account Creation'), 1, isset($values['google_account_creation']) && $values['google_account_creation'] == 1) ?>
+
+    <?= $this->form->label(t('Allow account creation only for those domains'), 'google_email_domains') ?>
+    <?= $this->form->text('google_email_domains', $values) ?>
+    <p class="form-help"><?= t('Use a comma to enter multiple domains: domain1.tld, domain2.tld') ?></p>
+
     <p class="form-help"><a href="https://kanboard.net/plugin/google-auth"><?= t('Help on Google authentication') ?></a></p>
 
     <div class="form-actions">
-        <input type="submit" value="<?= t('Save') ?>" class="btn btn-blue"/>
+        <input type="submit" value="<?= t('Save') ?>" class="btn btn-blue">
     </div>
 </div>
