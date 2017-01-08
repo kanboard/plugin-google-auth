@@ -1,6 +1,5 @@
 <h3><i class="fa fa-google fa-fw"></i><?= t('Google Authentication') ?></h3>
-<div class="listing">
-
+<div class="panel">
     <?= $this->form->label(t('Google OAuth callback URL'), 'google_oauth_url') ?>
     <input type="text" class="auto-select" readonly="readonly" value="<?= $this->url->href('OAuthController', 'handler', array('plugin' => 'GoogleAuth'), false, '', true) ?>"/>
 

@@ -15,7 +15,7 @@ Author
 Requirements
 ------------
 
-- Kanboard >= 1.0.29
+- Kanboard >= 1.0.37
 - Access to the [Google Developer Console](https://console.developers.google.com)
 - OAuth2 Google API credentials
 
