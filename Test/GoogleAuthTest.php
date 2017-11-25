@@ -39,6 +39,24 @@ class GoogleAuthTest extends Base
         $this->container['memoryCache']->flush();
         $this->assertTrue($provider->isAccountCreationAllowed(array('email' => 'me@mydomain.tld')));
         $this->assertFalse($provider->isAccountCreationAllowed(array('email' => 'me@my-other-domain.tld')));
+        $this->assertFalse($provider->isAccountCreationAllowed(array('email' => 'test+mydomain.tld+@example.org')));
+
+        $this->assertTrue($this->container['configModel']->save(array('google_account_creation' => '1', 'google_email_domains' => 'example.org, example.com')));
+        $this->container['memoryCache']->flush();
+        $this->assertTrue($provider->isAccountCreationAllowed(array('email' => 'me@example.org')));
+        $this->assertTrue($provider->isAccountCreationAllowed(array('email' => 'me@example.com')));
+        $this->assertFalse($provider->isAccountCreationAllowed(array('email' => 'me@example.net')));
+        $this->assertFalse($provider->isAccountCreationAllowed(array('email' => 'invalid email')));
+
+        $this->assertTrue($this->container['configModel']->save(array('google_account_creation' => '1', 'google_email_domains' => 'example')));
+        $this->container['memoryCache']->flush();
+        $this->assertTrue($provider->isAccountCreationAllowed(array('email' => 'me@example')));
+        $this->assertFalse($provider->isAccountCreationAllowed(array('email' => 'example@localhost')));
+
+        $this->assertTrue($this->container['configModel']->save(array('google_account_creation' => '1', 'google_email_domains' => 'example.org')));
+        $this->container['memoryCache']->flush();
+        $this->assertTrue($provider->isAccountCreationAllowed(array('email' => 'me@example.org')));
+        $this->assertFalse($provider->isAccountCreationAllowed(array('email' => 'me@subdomain.example.org')));
     }
 
     public function testGetClientId()

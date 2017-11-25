@@ -10,10 +10,9 @@ php:
 env:
   global:
     - PLUGIN=GoogleAuth
-    - KANBOARD_REPO=https://github.com/fguillot/kanboard.git
+    - KANBOARD_REPO=https://github.com/kanboard/kanboard.git
   matrix:
     - DB=sqlite
-    - DB=mysql
     - DB=postgres
 
 matrix:

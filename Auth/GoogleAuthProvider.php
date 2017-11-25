@@ -224,7 +224,12 @@ class GoogleAuthProvider extends Base implements OAuthAuthenticationProviderInte
         foreach (explode(',', $domains) as $domain) {
             $domain = trim($domain);
 
-            if (strpos($profile['email'], $domain) > 0) {
+            if (strpos($profile['email'], '@') === false) {
+                return false;
+            }
+
+            list(, $hostname) = explode('@', $profile['email']);
+            if (strpos($hostname, $domain) === 0) {
                 return true;
             }
         }
