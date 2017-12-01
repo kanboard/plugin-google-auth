@@ -40,6 +40,7 @@ class GoogleAuthTest extends Base
         $this->assertTrue($provider->isAccountCreationAllowed(array('email' => 'me@mydomain.tld')));
         $this->assertFalse($provider->isAccountCreationAllowed(array('email' => 'me@my-other-domain.tld')));
         $this->assertFalse($provider->isAccountCreationAllowed(array('email' => 'test+mydomain.tld+@example.org')));
+        $this->assertFalse($provider->isAccountCreationAllowed(array('email' => 'test@mydomain.tld.example.org')));
 
         $this->assertTrue($this->container['configModel']->save(array('google_account_creation' => '1', 'google_email_domains' => 'example.org, example.com')));
         $this->container['memoryCache']->flush();
