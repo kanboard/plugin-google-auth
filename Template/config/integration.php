@@ -16,7 +16,7 @@
     <?= $this->form->text('google_email_domains', $values) ?>
     <p class="form-help"><?= t('Use a comma to enter multiple domains: domain1.tld, domain2.tld') ?></p>
 
-    <p class="form-help"><a href="https://kanboard.net/plugin/google-auth"><?= t('Help on Google authentication') ?></a></p>
+    <p class="form-help"><a href="https://github.com/kanboard/plugin-google-auth#documentation"><?= t('Help on Google authentication') ?></a></p>
 
     <div class="form-actions">
         <input type="submit" value="<?= t('Save') ?>" class="btn btn-blue">
