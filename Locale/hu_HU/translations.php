@@ -1,11 +1,11 @@
 <?php
 
 return array(
-    'Link my Google Account' => 'Kapcsold össze a Google fiókkal',
-    'Unlink my Google Account' => 'Válaszd le a Google fiókomat',
-    'Login with my Google Account' => 'Jelentkezzen be Google fiókkal',
+    'Link my Google Account' => 'Összekapcsolás a Google fiókommal',
+    'Unlink my Google Account' => 'A Google fiókom összekapcsolásának megszüntetése',
+    'Login with my Google Account' => 'Bejelentkezés a Google fiókommal',
     'Google Account' => 'Google fiók',
-    // 'Google Authentication' => '',
-    // 'Help on Google authentication' => '',
+    'Google Authentication' => 'Google hitelesítés',
+    'Help on Google authentication' => 'Súgó a Google hitelesítéshez',
 );
 
