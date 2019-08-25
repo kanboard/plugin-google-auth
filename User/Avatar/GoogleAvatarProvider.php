@@ -27,7 +27,7 @@ class GoogleAvatarProvider extends Base implements AvatarProviderInterface
     {
         $url = $this->googleAvatarCache[$user['id']].'?sz='.$size;
         $title = $this->helper->text->e($user['name'] ?: $user['username']);
-        return '<img src="'.$url.'" alt="'.$title.'" title="'.$title.'">';
+        return '<img src="'.$url.'" alt="'.$title.'" title="'.$title.'" width="'.$size.'">';
     }
 
     /**
