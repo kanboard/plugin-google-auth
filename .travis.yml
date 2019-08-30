@@ -3,6 +3,10 @@ sudo: false
 notifications:
   email: false
 
+services:
+  - postgresql
+  - mysql
+
 php:
   - 7.2
 
