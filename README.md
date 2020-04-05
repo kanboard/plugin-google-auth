@@ -1,8 +1,6 @@
 Google Authentication
 =====================
 
-[![Build Status](https://travis-ci.org/kanboard/plugin-google-auth.svg?branch=master)](https://travis-ci.org/kanboard/plugin-google-auth)
-
 - Link a Google account to a Kanboard user profile.
 - Show Google Avatar image.
 
