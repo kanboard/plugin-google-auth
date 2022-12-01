@@ -18,16 +18,23 @@ class GoogleUserProvider extends OAuthUserProvider
     protected $allowUserCreation;
 
     /**
+     * @var array
+     */
+    protected $externalGroupIds;
+
+    /**
      * Constructor
      *
      * @access public
      * @param  array $user
      * @param  bool   $allowUserCreation
+     * @param  array   $externalGroupIds
      */
-    public function __construct(array $user, $allowUserCreation = false)
+    public function __construct(array $user, $allowUserCreation = false, $externalGroupIds = [])
     {
         $this->user = $user;
         $this->allowUserCreation = $allowUserCreation;
+        $this->externalGroupIds = $externalGroupIds;
     }
 
     /**
@@ -95,5 +102,16 @@ class GoogleUserProvider extends OAuthUserProvider
         }
 
         return array();
+    }
+
+    /**
+     * Get external group ids
+     *
+     * @access public
+     * @return array
+     */
+    public function getExternalGroupIds()
+    {
+        return $this->externalGroupIds;
     }
 }

@@ -16,6 +16,11 @@
     <?= $this->form->text('google_email_domains', $values) ?>
     <p class="form-help"><?= t('Use a comma to enter multiple domains: domain1.tld, domain2.tld') ?></p>
 
+    <?= $this->form->label(t('Add new users to groups'), 'google_signup_groups') ?>
+    <?= $this->form->text('google_signup_groups', $values) ?>
+    <p class="form-help"><?= t('Use a comma to enter multiple group names: developers,designers') ?></p>
+
+
     <p class="form-help"><a href="https://github.com/kanboard/plugin-google-auth#documentation"><?= t('Help on Google authentication') ?></a></p>
 
     <div class="form-actions">
