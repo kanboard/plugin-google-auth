@@ -38,6 +38,7 @@ class Plugin extends Base
     public function onLoginSuccess(AuthSuccessEvent $event)
     {
         if ($event->getAuthType() === 'Google') {
+            /** @var GoogleAuthProvider */
             $provider = $this->authenticationManager->getProvider($event->getAuthType());
             $avatar_url = $provider->getUser()->getAvatarUrl();
             $user_id = $this->userSession->getId();
@@ -50,6 +51,18 @@ class Plugin extends Base
                 }
 
                 $this->userMetadataModel->save($user_id, $options);
+            }
+
+            $signup_groups = $provider->getGoogleSignupGroups();
+            $user_groups = array_column($this->groupMemberModel->getGroups($user_id), 'id', 'id');
+            if (!empty($signup_groups) && !is_null($signup_groups)) {
+                $signup_groups = array_map('trim', explode(',', $signup_groups));
+                $groups = $this->groupModel->getQuery()->in('name', $signup_groups)->findAll();
+                foreach ($groups as $signup_group) {
+                    if (!isset($user_groups[$signup_group['id']])) {
+                        $this->groupMemberModel->addUser($signup_group['id'], $user_id);
+                    }
+                }
             }
         }
     }
