@@ -59,7 +59,7 @@ class GoogleAuthProvider extends Base implements OAuthAuthenticationProviderInte
     {
         $profile = $this->getProfile();
 
-        if (!empty($profile)) {
+        if (! empty($profile)) {
             $this->userInfo = new GoogleUserProvider($profile, $this->isAccountCreationAllowed($profile));
 
             return true;
@@ -180,7 +180,7 @@ class GoogleAuthProvider extends Base implements OAuthAuthenticationProviderInte
      *
      * @access public
      * @return string
-     */
+    */
     public function getGoogleEmailDomains()
     {
         if (defined('GOOGLE_EMAIL_DOMAINS') && GOOGLE_EMAIL_DOMAINS) {
@@ -217,7 +217,7 @@ class GoogleAuthProvider extends Base implements OAuthAuthenticationProviderInte
         if ($this->configModel->get('google_account_creation', 0) == 1) {
             $domains = $this->getGoogleEmailDomains();
 
-            if (!empty($domains)) {
+            if (! empty($domains)) {
                 return $this->validateDomainRestriction($profile, $domains);
             }
 

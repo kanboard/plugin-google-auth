@@ -56,7 +56,7 @@ class Plugin extends Base
             $signup_groups = $provider->getGoogleSignupGroups();
             $user_groups = array_column($this->groupMemberModel->getGroups($user_id), 'id', 'id');
             if (!empty($signup_groups) && !is_null($signup_groups)) {
-                $signup_groups = explode(',', $signup_groups);
+                $signup_groups = array_map('trim', explode(',', $signup_groups));
                 $groups = $this->groupModel->getQuery()->in('name', $signup_groups)->findAll();
                 foreach ($groups as $signup_group) {
                     if (!isset($user_groups[$signup_group['id']])) {
