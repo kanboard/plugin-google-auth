@@ -109,7 +109,7 @@ class GoogleAuthTest extends Base
         $user = $provider->getUser();
         $this->assertInstanceOf('Kanboard\Plugin\GoogleAuth\User\GoogleUserProvider', $user);
         $this->assertEquals('Test', $user->getName());
-        $this->assertEquals('', $user->getInternalId());
+        $this->assertEquals(0, $user->getInternalId());
         $this->assertEquals(1234, $user->getExternalId());
         $this->assertEquals('', $user->getRole());
         $this->assertEquals('', $user->getUsername());
