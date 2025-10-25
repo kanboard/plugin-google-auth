@@ -1,5 +1,7 @@
 <?php
 
+namespace KanboardTests\units;
+
 use Kanboard\Plugin\GoogleAuth\User\GoogleUserProvider;
 
 require_once 'tests/units/Base.php';
